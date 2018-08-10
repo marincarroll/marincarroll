@@ -1,16 +1,33 @@
 $(document).ready(function() {
-    $(".nav-toggle").click(function() {
-        $("#main-nav").toggleClass("open");
-    });
+    
+    function reveal(element) {
     
     var d= 0;
-$('.page > *').each(function() {
-    $(this).delay(d).fadeTo('fast', 1).css('margin-top', 'unset');
-    d += 100;
-});
-
-    $(function() {
-        $('.lazy').lazy();
+    $(element).each(function() {
+        $(this).delay(d).addClass('reveal');
+        d += 1000000;
+    });
+    }
+    
+    function hide(element) {
+    
+    var d= 0;
+    $(element).each(function() {
+        $(this).delay(d).removeClass('reveal');
+        d += 1000000;
+    });
+    }
+    
+    reveal('.page > *');
+    
+    $(".nav-toggle").click(function() {
+        $("#main-nav").toggleClass("open");
+        
+        if ($("#main-nav").hasClass("open")) {
+            reveal('#main-nav li');
+        } else {
+            hide('#main-nav li');
+        }
     });
         
 });
