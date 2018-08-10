@@ -17,6 +17,13 @@ body {
 
 h1, h2, h3 {
     font-family: "Cormorant", sans-serif;
+    display: block;
+    margin-top: 1rem;
+    content: "";
+}
+
+p {
+margin-bottom: 1.5rem;
 }
 
 #main-nav {
@@ -36,11 +43,13 @@ h1, h2, h3 {
     height: 100%;
     left: 0;
     top: 30%;
+    bottom: 3rem;
     background: inherit;
     opacity: 0;
     background-image: url(../img/cathedral.jpg);
     background-repeat: no-repeat;
     background-size: 100% auto;
+    background-position: bottom center;
     background-blend-mode: multiply;
     transition: inherit;
 }
@@ -53,24 +62,41 @@ h1, h2, h3 {
     opacity: 0.2;
 }
 
-.nav-toggle {
+.next-page, .nav-toggle {
     border: none; 
     background-color: inherit;
-    position: absolute;
-    right: -95px;
-    top: 50px;
-    width: 140px;
-    height: 55px;
-    transform: rotate(-90deg);
     font-family: inherit;
     color: inherit;
     box-sizing: border-box;
-    font-size: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 0.3em;
+    cursor: pointer;
 }
 
-.nav-toggle:focus {
+.next-page {
+position: fixed;
+    bottom: 0;
+    right: 0;
+    height: 55px;
+    padding: 0 25px;
+    font-size: 1.25rem;
+    letter-spacing: 0.15em;
+
+}
+
+.nav-toggle {
+    position: absolute;
+    right: -72px;
+    top: 25px;
+    width: 110px;
+    height: 55px;
+    transform: rotate(-90deg);
+    box-sizing: border-box;
+    font-size: 1.25rem;
+
+}
+
+.nav-toggle:focus, .next-page:focus {
     outline: none;
 }
 
@@ -91,6 +117,7 @@ h1, h2, h3 {
 }
 
 main {
+    background: inherit;
     width: 100%;
     height: 100%;
     overflow-x: scroll;
@@ -104,8 +131,9 @@ main {
 }
 
 .page {
+    color: #474551;
     overflow: hidden;
-    background: #FFFCF9;
+    background: #ebeaef;
     display: inline-block;
     padding: 10% 15%;
     white-space: normal;
@@ -113,4 +141,18 @@ main {
     height: 100%;
     width: 100%;
 
+}
+
+.page > * {
+    opacity: 0;
+    margin-top: -20px;
+    transition: 1.5s;
+}
+
+#contact.page {
+    text-align: right;
+    width: 2rem;
+    padding: 10% 4rem;
+    color: #ebeaef;
+    background: #474551;
 }
