@@ -5,18 +5,35 @@
 }
 
 html {
-    background: #36ba9d;
+    background: #474551;
+    color: #ebeaef;
 }
 
 body {
     background: inherit;
     font-size: 17px;
     font-family: "Anonymous Pro", monospace;
-    line-height: 2;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3 {
-    font-family: "Cormorant", sans-serif;
+h1 {
+    font-size: 2.75rem;
+    font-family: "Cormorant Garamond", sans-serif;
+    margin-bottom: 3rem;
+}
+
+h1:after {
+    display: block;
+    height: 1px;
+    width: 75px;
+    margin-top: 1rem;
+    background: #474551;
+    content: "";
+}
+
+p {
+margin-bottom: 1.5rem;
 }
 
 #main-nav {
@@ -34,13 +51,13 @@ h1, h2, h3 {
     position: absolute;
     width: 100%;
     height: 100%;
-    left: 0;
-    top: 30%;
+    bottom: 3rem;
     background: inherit;
     opacity: 0;
     background-image: url(../img/cathedral.jpg);
     background-repeat: no-repeat;
     background-size: 100% auto;
+    background-position: bottom center;
     background-blend-mode: multiply;
     transition: inherit;
 }
@@ -53,24 +70,41 @@ h1, h2, h3 {
     opacity: 0.2;
 }
 
-.nav-toggle {
+.next-page, .nav-toggle {
     border: none; 
     background-color: inherit;
-    position: absolute;
-    right: -95px;
-    top: 50px;
-    width: 140px;
-    height: 55px;
-    transform: rotate(-90deg);
     font-family: inherit;
     color: inherit;
     box-sizing: border-box;
-    font-size: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 0.3em;
+    cursor: pointer;
 }
 
-.nav-toggle:focus {
+.next-page {
+position: fixed;
+    bottom: 0;
+    right: 0;
+    height: 55px;
+    padding: 0 25px;
+    font-size: 1.25rem;
+    letter-spacing: 0.15em;
+
+}
+
+.nav-toggle {
+    position: absolute;
+    right: -72px;
+    top: 25px;
+    width: 110px;
+    height: 55px;
+    transform: rotate(-90deg);
+    box-sizing: border-box;
+    font-size: 1.25rem;
+
+}
+
+.nav-toggle:focus, .next-page:focus {
     outline: none;
 }
 
@@ -84,6 +118,16 @@ h1, h2, h3 {
     z-index: 1;
 }
 
+#main-nav li {
+    opacity: 0;
+    margin-right: 20px;
+}
+
+#main-nav li.reveal {
+    opacity: 1;
+    margin-right: initial;
+}
+
 #main-nav ul a {
     font-style: italic;
     text-decoration: none;
@@ -91,6 +135,7 @@ h1, h2, h3 {
 }
 
 main {
+    background: inherit;
     width: 100%;
     height: 100%;
     overflow-x: scroll;
@@ -104,8 +149,9 @@ main {
 }
 
 .page {
+    color: #474551;
     overflow: hidden;
-    background: #FFFCF9;
+    background: #ebeaef;
     display: inline-block;
     padding: 10% 15%;
     white-space: normal;
@@ -113,4 +159,23 @@ main {
     height: 100%;
     width: 100%;
 
+}
+
+.page > * {
+    opacity: 0;
+    margin-top: -10px;
+    transition: 1s ease-in-out;
+}
+
+.page > *.reveal {
+    opacity: 1;
+    margin-top: 0;
+}
+
+#contact.page {
+    text-align: right;
+    width: 2rem;
+    padding: 10% 4rem;
+    color: #ebeaef;
+    background: #474551;
 }
