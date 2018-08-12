@@ -40,10 +40,11 @@ margin-bottom: 1.5rem;
     background: inherit;
     height: 100%;
     position: absolute;
-    width: 400px;
-    left: -390px;
+    width: 360px;
+    left: -360px;
     z-index: 1;
     color: #FFFCF9;
+    transition: 0.5s ease;
 }
 
 #main-nav:after {
@@ -70,7 +71,7 @@ margin-bottom: 1.5rem;
     opacity: 0.2;
 }
 
-.next-page, .nav-toggle {
+.next-page, .nav-toggle, .prev-page {
     border: none; 
     background-color: inherit;
     font-family: inherit;
@@ -81,15 +82,22 @@ margin-bottom: 1.5rem;
     cursor: pointer;
 }
 
-.next-page {
-position: fixed;
+.next-page, .prev-page {
+    position: fixed;
     bottom: 0;
-    right: 0;
     height: 55px;
     padding: 0 25px;
     font-size: 1.25rem;
     letter-spacing: 0.15em;
+    z-index: 1;
+}
 
+.prev-page {
+    left: 0;
+}
+
+.next-page {
+    right: 0;
 }
 
 .nav-toggle {
@@ -97,7 +105,8 @@ position: fixed;
     right: -72px;
     top: 25px;
     width: 110px;
-    height: 55px;
+    height: 68px;
+    padding-top: 19px;
     transform: rotate(-90deg);
     box-sizing: border-box;
     font-size: 1.25rem;
@@ -149,33 +158,62 @@ main {
 
 .page {
     color: #474551;
-    border-left: 15px solid pink;
     overflow: hidden;
+    position: relative;
     background: #ebeaef;
     display: inline-block;
-    padding: 10% 15%;
     white-space: normal;
     box-sizing: border-box;
     height: 100%;
     width: 100%;
-
 }
 
-.page > * {
+.page .contents {
+    padding: 10% 15%;
+}
+
+.page .contents > * {
+    margin-left: -10px;
+    margin-right: 10px;
     opacity: 0;
-    margin-left: -5px;
-    transition: 600ms ease-in-out;
+    transition: 800ms ease-in-out;
 }
 
-.page > *.reveal {
+.page .contents > *.reveal {
     opacity: 1;
     margin-left: 0;
+    margin-right: 0;
 }
 
 #contact.page {
     text-align: right;
-    width: 2rem;
+    width: 33rem;
     padding: 10% 4rem;
+    margin-right: -15px;
     color: #ebeaef;
     background: #474551;
+    z-index: 9999;
+}
+
+#contact.page:after {
+    content:"";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right: -2rem;
+    opacity: 0.2;
+    bottom: 8rem;
+    background: inherit;
+    background-image: url(../img/skeleton.jpg);
+    background-repeat: no-repeat;
+    background-size:45rem;
+    background-position: -40% 120%;
+    background-blend-mode: multiply;
+    transition: inherit;
+    -webkit-backface-visibility: hidden;
+}
+
+#contact.page .contents {
+    position: relative;
+    z-index: 1;
 }
