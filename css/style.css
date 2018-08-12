@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    transition: 0.4s;
 }
 
 html {
@@ -20,10 +19,13 @@ body {
 h1 {
     font-size: 2.75rem;
     font-family: "Cormorant Garamond", sans-serif;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
+    line-height: 1.5;
+    position: relative;
 }
 
 h1:after {
+    position: absolute;
     display: block;
     height: 1px;
     width: 75px;
@@ -33,18 +35,24 @@ h1:after {
 }
 
 p {
-margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+a {
+    color: inherit;
 }
 
 #main-nav {
     background: inherit;
     height: 100%;
+    box-sizing: border-box;
     position: absolute;
     width: 360px;
     left: -360px;
-    z-index: 1;
+    z-index: 2;
     color: #FFFCF9;
-    transition: 0.5s ease;
+    transition: 500ms ease;
+    border-right: 1px dashed transparent;
 }
 
 #main-nav:after {
@@ -68,7 +76,7 @@ margin-bottom: 1.5rem;
 }
 
 #main-nav.open:after {
-    opacity: 0.2;
+    opacity: 0.3;
 }
 
 .next-page, .nav-toggle, .prev-page {
@@ -102,16 +110,18 @@ margin-bottom: 1.5rem;
 
 .nav-toggle {
     position: absolute;
-    right: -72px;
-    top: 25px;
-    width: 110px;
-    height: 68px;
-    padding-top: 19px;
+    right: -85px;
+    top: 18px;
+    width: 120px;
+    height: 50px;
     transform: rotate(-90deg);
     box-sizing: border-box;
     font-size: 1.25rem;
-
+    border-bottom: 1px dashed transparent;
+    border-left: 1px dashed transparent;
+    transition: inherit;
 }
+
 
 .nav-toggle:focus, .next-page:focus {
     outline: none;
@@ -142,6 +152,25 @@ margin-bottom: 1.5rem;
     font-style: italic;
     text-decoration: none;
     color: inherit;
+    position: relative;
+}
+
+#main-nav ul a:after {
+    content: "";
+    position: absolute;
+    right: -10px;
+    top: 52%;
+    width: 0%;
+    height: 5px;
+    background: #ebeaef;
+    opacity: 0.3;
+    z-index: -1;
+    transition: 0.4s;
+}
+
+#main-nav ul a:hover:after {
+    width: 100%;    
+    padding-left: 25px;
 }
 
 main {
@@ -158,7 +187,7 @@ main {
 
 .page {
     color: #474551;
-    overflow: hidden;
+    overflow: scroll;
     position: relative;
     background: #ebeaef;
     display: inline-block;
@@ -168,8 +197,14 @@ main {
     width: 100%;
 }
 
+.page + .page {
+    border-left: 1px dashed;
+}
+
 .page .contents {
+    position: absolute;
     padding: 10% 15%;
+    max-width: 700px;
 }
 
 .page .contents > * {
@@ -185,14 +220,19 @@ main {
     margin-right: 0;
 }
 
+#home.page .contents {
+ bottom: 0;
+}
+
 #contact.page {
     text-align: right;
-    width: 33rem;
-    padding: 10% 4rem;
+    width: 32rem;
+    padding: 10% 1.5rem;
     margin-right: -15px;
+    box-sizing: border-box;
     color: #ebeaef;
     background: #474551;
-    z-index: 9999;
+    border-left: none;
 }
 
 #contact.page:after {
@@ -201,13 +241,13 @@ main {
     width: 100%;
     height: 100%;
     right: -2rem;
-    opacity: 0.2;
+    opacity: 0.3;
     bottom: 8rem;
     background: inherit;
     background-image: url(../img/skeleton.jpg);
     background-repeat: no-repeat;
     background-size:45rem;
-    background-position: -40% 120%;
+    background-position: -5% 110%;
     background-blend-mode: multiply;
     transition: inherit;
     -webkit-backface-visibility: hidden;
@@ -216,4 +256,9 @@ main {
 #contact.page .contents {
     position: relative;
     z-index: 1;
+}
+
+#contact.page h1:after {
+    right: 0;
+    background: #ebeaef;
 }
