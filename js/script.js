@@ -32,20 +32,20 @@ function scrolledTo() {
             if (scrollRight >= leftEdge) {
                 reveal(contents, 0, 100);
                 if (currentPage == "contact") {
-                    $('main').css('border-right','none'); 
+                    //$('main').css('border-right','0px solid transparent'); 
                     
                 } else {
-                    $('main').css('border-right','10px solid transparent');
+                    //$('main').css('border-right','10px solid transparent');
                 }
-            }        
+            }
             /*if (scrollLeft >= rightEdge) {
                 hide(contents, 0, 100);
             }*/
-        } 
+        }
         
         pagePositions();
         $('main').scroll(pagePositions);
-    }); 
+    });
 }
 
 function navBorder() {
@@ -61,7 +61,6 @@ function navBorder() {
 }
 
 $(document).ready(function() {
-    $(".nav-toggle").click(function() {
     
     /*$(function() {
         $("main").mousewheel(function(evt, chg) {
@@ -70,16 +69,9 @@ $(document).ready(function() {
             console.log(chg);
         });
     });*/
-    
-     $(function() {
-        $('a').bind('click',function(event){
-            var $anchor = $(this);
-
-            $('main').stop().animate({
-                scrollLeft: $($anchor.attr('href')).offset().left
-            }, 900);
-            event.preventDefault();
-        });
+    $('a[href*=\\#]').on('click', function(event){     
+        event.preventDefault();
+        $('main').animate({scrollLeft:$(this.hash).offset().left}, 500);
     });
     
     $(".nav-toggle").click(function () {
@@ -88,17 +80,13 @@ $(document).ready(function() {
         
         if ($("#main-nav").hasClass("open")) {
             reveal('#main-nav li', 100, 100);          
-            setTimeout(function(){
-                navBorder();
-            }, (500 - (500 * contactEdgePercent)));
+
         } else {
             hide('#main-nav li', 100, 0);         
-            setTimeout(function(){
-                navBorder();
-            }, 500 - (1 - contactEdgePercent));
+
         }       
     });
-});    
+    
     navBorder();
     scrolledTo();
     $(window).resize(scrolledTo, navBorder);
