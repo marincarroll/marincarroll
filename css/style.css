@@ -203,9 +203,11 @@ main:before {
 }
 
 .container {
+    position: relative;
     width: auto;
     height: 100%;
-    overflow: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 .page {
     color: #474551;

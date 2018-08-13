@@ -26,8 +26,8 @@ function scrolledTo() {
             leftEdge = $(this).children(".contents").offset().left,
             rightEdge = leftEdge + $(this).innerWidth();
         function pagePositions() {
-            var scrollLeft = $('main').scrollLeft(),
-                scrollRight = $('main').width() + scrollLeft,
+            var scrollLeft = $('.container').scrollLeft(),
+                scrollRight = $('.container').width() + scrollLeft,
                 contents = '#' + currentPage + ' .contents > *';
             if (scrollRight >= leftEdge) {
                 reveal(contents, 0, 100);
@@ -44,7 +44,7 @@ function scrolledTo() {
         }
         
         pagePositions();
-        $('main').scroll(pagePositions);
+        $('.container').scroll(pagePositions);
     });
 }
 
@@ -60,6 +60,26 @@ function navBorder() {
     }
 }
 
+function smoothScroll() {
+    $('a[href*=\\#]').each(function (index) {
+        function linkPositions(){
+            var hash = this.hash;
+            leftEdge = $(hash).offset().left;
+        }
+        
+        function scroller() {
+            $(this).on('click', function(event){     
+                event.preventDefault();
+                $('.container').animate({scrollLeft:leftEdge}, 500);
+            });
+            linkPositions();
+        }
+        
+        linkPositions();
+        scroller();
+    });
+}
+
 $(document).ready(function() {
     
     /*$(function() {
@@ -69,10 +89,6 @@ $(document).ready(function() {
             console.log(chg);
         });
     });*/
-    $('a[href*=\\#]').on('click', function(event){     
-        event.preventDefault();
-        $('main').animate({scrollLeft:$(this.hash).offset().left}, 500);
-    });
     
     $(".nav-toggle").click(function () {
         
@@ -89,6 +105,7 @@ $(document).ready(function() {
     
     navBorder();
     scrolledTo();
-    $(window).resize(scrolledTo, navBorder);
-    $('main').scroll(navBorder);
+    smoothScroll();
+    $(window).resize(scrolledTo, navBorder, smoothScroll);
+    $('.container').scroll(navBorder);
 });
