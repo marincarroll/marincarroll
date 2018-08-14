@@ -202,13 +202,6 @@ main:before {
     z-index: 2;
 }
 
-.container {
-    position: relative;
-    width: auto;
-    height: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-}
 .page {
     color: #474551;
     overflow: scroll;
@@ -256,6 +249,11 @@ main:before {
 .next-page:before {
     content: "Next: ";
     text-transform: uppercase;
+    font-style: normal;
+}
+
+.next-page:after {
+    content: " \027f6";
     font-style: normal;
 }
 
