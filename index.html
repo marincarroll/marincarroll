@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head>    
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro:700,700i|Cormorant+Garamond:600" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/vendor/jquery.lazy.min.js"></script>
     <script src="js/vendor/jquery.mousewheel.min.js"></script>
-
     <script type="text/javascript" src="js/script.js"></script>
- 
 </head>
 <body>
     <nav id="main-nav">
@@ -21,8 +19,6 @@
         </ul>
     </nav>
     <main>
-        <button class="prev-page"><</button>
-        <button class="next-page">></button>
         <div id="home" class="page">
             <div class="contents">
                 <p style="font-style:italic; margin-bottom: 0;">[ The portfolio of... ]</p>
@@ -30,6 +26,8 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.</p>
                 <p><b>Lorem ipsum dolor sit amet, consectetur adipiscing elit</b>. Sed dignissim lacinia nunc. <b>Praesent mauris</b>. Curabitur tortor. <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</i><a href="#contact">Pellentesque nibh.</a></p>
             </div>
+            <span class="this-page">[ 1 / 5 ]</span>
+            <a href="#web-work" class="next-page">Web Work</a>
         </div
         ><div id="web-work" class="page">
             <div class="contents">
@@ -40,6 +38,8 @@
                 <h2>Amorsa Therapeutics</h2>
                 <h2>EdTech Times</h2>
             </div>
+            <span class="this-page">[ 2 / 5 ]</span>
+            <a href="#misc-work" class="next-page">Misc. Work</a>
         </div
         ><div id="misc-work" class="page">
             <div class="contents">
@@ -48,6 +48,8 @@
             <h2>VIM Fitness - Print Design</h2>
             <h2>This Website!</h2>
             </div>
+            <span class="this-page">[ 3 / 5 ]</span>
+            <a href="#contact" class="next-page">Contact Me</a>
         </div
         ><div id="contact" class="page">
             <div class="contents">
@@ -57,7 +59,7 @@
                 <p><a href="#">LinkedIn</a> | <a href="#">Behance</a> | <a href="#">Dribbble</a></p>
             <p>Thank you for your interest. I look forward to hearing from you! -- MC</p>
             </div>
-        </div>      
+        </div> 
     </main>
 </body>
 </html>
